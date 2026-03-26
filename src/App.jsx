@@ -1,5 +1,34 @@
-import { useState } from "react";
-import { AlertCircle, CheckCircle2, Clock, Mail, Globe, TrendingUp, TrendingDown, ChevronDown, ChevronRight, Zap, AlertTriangle, Activity } from "lucide-react";
+import { useState, useEffect } from "react";
+import { AlertCircle, CheckCircle2, Clock, Mail, Globe, TrendingUp, TrendingDown, ChevronDown, ChevronRight, Zap, AlertTriangle, Activity, Lock } from "lucide-react";
+
+const PIN = "8079";
+
+function PinGate({ onUnlock }) {
+  const [code, setCode] = useState("");
+  const [error, setError] = useState(false);
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (code === PIN) { onUnlock(); } else { setError(true); setCode(""); setTimeout(() => setError(false), 1500); }
+  };
+  return (
+    <div style={{ minHeight: "100vh", background: "#1a1a2e", display: "flex", alignItems: "center", justifyContent: "center", fontFamily: "-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" }}>
+      <form onSubmit={handleSubmit} style={{ textAlign: "center" }}>
+        <Lock size={32} color="#8B5CF6" style={{ marginBottom: 16 }} />
+        <h2 style={{ color: "#fff", fontSize: 18, fontWeight: 700, margin: "0 0 8px" }}>Situational Awareness Briefing</h2>
+        <p style={{ color: "#6b7280", fontSize: 13, margin: "0 0 24px" }}>Enter PIN to continue</p>
+        <input type="password" inputMode="numeric" maxLength={6} value={code} onChange={(e) => setCode(e.target.value.replace(/\D/g, ""))}
+          autoFocus placeholder="----"
+          style={{ width: 160, padding: "12px 16px", fontSize: 24, fontWeight: 700, textAlign: "center", letterSpacing: 8, background: "#2d2d44", border: error ? "2px solid #EF4444" : "2px solid #3d3d5c", borderRadius: 12, color: "#fff", outline: "none" }} />
+        <br />
+        <button type="submit" style={{ marginTop: 16, padding: "10px 32px", background: "#8B5CF6", color: "#fff", border: "none", borderRadius: 8, fontSize: 14, fontWeight: 600, cursor: "pointer" }}>Unlock</button>
+        {error && <p style={{ color: "#EF4444", fontSize: 12, marginTop: 8 }}>Incorrect PIN</p>}
+      </form>
+    </div>
+  );
+}
+function getCentralTime() {
+  return new Date().toLocaleString("en-US", { timeZone: "America/Chicago", weekday: "long", year: "numeric", month: "long", day: "numeric", hour: "numeric", minute: "2-digit", hour12: true }) + " CT";
+}
 
 const SEGMENTS = {
   hive: { label: "Hive Studio", color: "#8B5CF6", bg: "#F5F3FF" },
@@ -15,8 +44,7 @@ const STATUS = {
   deployed: { icon: CheckCircle2, color: "#0EA5E9", label: "Recently Deployed" },
 };
 const briefingData = {
-  timestamp: "2026-03-26T02:30:00Z",
-  displayTime: "March 26, 2026 — 9:30 PM CT",
+  // displayTime is set dynamically at render time via getCentralTime()
   summary: { activeProjects: 8, needsAttention: 3, recentDeploys: 4, stalledItems: 2, unreadActions: 2 },  segments: {
     hive: {
       projects: [
@@ -105,15 +133,18 @@ function ActionItem({ action }) {
         <div style={{ fontSize: 11, fontWeight: 600, color: "#6b7280", marginBottom: 4 }}>NOTION PAGES</div>
         <div style={{ fontSize: 12, color: "#374151" }}>{data.notion.join(" · ")}</div></div>)}
     </div>)}</div>);
-}export default function SituationalAwarenessBriefing() {
-  const d = briefingData; const [activeTab, setActiveTab] = useState("overview");
+}function Dashboard() {
+  const d = briefingData;
+  const [activeTab, setActiveTab] = useState("overview");
+  const [displayTime, setDisplayTime] = useState(getCentralTime());
+  useEffect(() => { const t = setInterval(() => setDisplayTime(getCentralTime()), 60000); return () => clearInterval(t); }, []);
   return (<div style={{ fontFamily: "-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif", maxWidth: 820, margin: "0 auto", padding: 24, background: "#FAFAFA", minHeight: "100vh" }}>
     <div style={{ marginBottom: 24 }}>
       <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 4 }}>
         <div style={{ width: 8, height: 8, borderRadius: "50%", background: "#10B981", animation: "pulse 2s infinite" }} />
         <span style={{ fontSize: 11, fontWeight: 600, color: "#10B981", textTransform: "uppercase", letterSpacing: 1 }}>Live Briefing</span></div>
       <h1 style={{ fontSize: 26, fontWeight: 800, color: "#1a1a2e", margin: "0 0 4px" }}>Situational Awareness Briefing</h1>
-      <p style={{ fontSize: 13, color: "#6b7280", margin: 0 }}>{d.displayTime} · Aaron Uitenbroek</p></div>
+      <p style={{ fontSize: 13, color: "#6b7280", margin: 0 }}>{displayTime} · Aaron Uitenbroek</p></div>
     <div style={{ display: "flex", gap: 12, marginBottom: 24, flexWrap: "wrap" }}>
       <StatCard label="Active Projects" value={d.summary.activeProjects} icon={Activity} color="#10B981" />
       <StatCard label="Needs Attention" value={d.summary.needsAttention} icon={AlertTriangle} color="#F59E0B" />
@@ -153,4 +184,10 @@ function ActionItem({ action }) {
       <span style={{ fontSize: 11, color: "#9ca3af" }}>Sources: Slack · Gmail · GitHub · Notion · Vercel</span></div>
     <style>{`@keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }`}</style>
   </div>);
+}
+
+export default function App() {
+  const [unlocked, setUnlocked] = useState(false);
+  if (!unlocked) return <PinGate onUnlock={() => setUnlocked(true)} />;
+  return <Dashboard />;
 }
