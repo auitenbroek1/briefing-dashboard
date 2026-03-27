@@ -45,14 +45,14 @@ const STATUS = {
 };
 const briefingData = {
   // displayTime is set dynamically at render time via getCentralTime()
-  summary: { activeProjects: 8, needsAttention: 3, recentDeploys: 4, stalledItems: 2, unreadActions: 2 },  segments: {
+  summary: { activeProjects: 9, needsAttention: 3, recentDeploys: 5, stalledItems: 1, unreadActions: 3 },  segments: {
     hive: {
       projects: [
         { name: "superstack1", repo: "superstack1", status: "active", lastPush: "Today 3:29am", detail: "Paperclip deep research added. TypeScript.", vercel: "—" },
         { name: "paperclipAU", repo: "paperclipAU", status: "active", lastPush: "Mar 24", detail: "Open-source orchestration for zero-human companies.", vercel: "—" },
         { name: "basepoint-mono2", repo: "basepoint-mono2", status: "attention", lastPush: "Mar 24", detail: "TypeScript monorepo. 1 OPEN ISSUE: P02 HVAC Module.", vercel: "basepoint-mono2", issue: "P02 HVAC Module — Validation Report & Remediation Plan" },
         { name: "hivestudio-ai", repo: "—", status: "deployed", lastPush: "—", detail: "Vercel project live. Main Hive Studio web presence.", vercel: "hivestudio-ai" },
-        { name: "exodus1", repo: "exodus1", status: "deployed", lastPush: "Mar 21", detail: "TypeScript. Deployed on Vercel.", vercel: "exodus1" },
+        { name: "exodus1", repo: "exodus1", status: "deployed", lastPush: "Mar 21", detail: "TTS fully operational (A-Xee voice). 72 PASS, 0 FAIL. 1 open bead: Pakistan validation.", vercel: "exodus1" },
         { name: "tstarr", repo: "tstarr", status: "deployed", lastPush: "Mar 23", detail: "HTML. Deployed on Vercel.", vercel: "tstarr" },
         { name: "cowork-codex-test", repo: "cowork-codex-test", status: "active", lastPush: "Yesterday", detail: "JS. Snake game test project.", vercel: "—" },
         { name: "TheSwarm", repo: "TheSwarm", status: "active", lastPush: "Mar 21", detail: "Shell scripts. Swarm experimentation.", vercel: "the-swarm" },
@@ -63,13 +63,13 @@ const briefingData = {
     },
     i10: {
       projects: [
-        { name: "i10research-website", repo: "i10research-website", status: "deployed", lastPush: "Mar 22", detail: "HTML site. Deployed on Vercel.", vercel: "i10research-website" },
+        { name: "i10research-website", repo: "i10research-website", status: "deployed", lastPush: "Mar 22", detail: "Launch-ready. 924/924 tests. 37 ADRs. FINRA compliance fixed. GHL + GA4 live.", vercel: "i10research-website" },
         { name: "es-futures-levels", repo: "es-futures-levels", status: "active", lastPush: "Yesterday", detail: "Daily auto-update bot. Alfred posting to Slack #n8n.", vercel: "—" },
         { name: "Trading Tools", repo: "au-MktStructureVP / PERMShindcast", status: "active", lastPush: "Various", detail: "Market structure and hindcast tools.", vercel: "—" },
       ],
       notion: ["ITPM PTM Idea Generation", "Boosted.ai", "Alfred Reports", "Aaron strategies & weather"],
-      actions: [{ type: "info", text: "Alfred bot active — Key Level: 6631, R: 6662/6692/6715, S: 6611/6586/6544, VIX: 23.42" }],
-      overall: "Active and automated. es-futures-levels bot running daily. i10 website stable.",
+      actions: [{ type: "info", text: "Alfred bot active — Key Level: 6549, R: 6580/6611, S: 6511/6470/6446, VIX: 23.42/27.24" }],
+      overall: "i10 website launch-ready. Alfred bot running daily. Nasdaq password needs attention.",
     },    electric: {
       projects: [{ name: "electricease-ai1", repo: "electricease-ai1", status: "active", lastPush: "Mar 23", detail: "PHP. Rebuild knowledge pack + PDFTron replacement.", vercel: "—" }],
       notion: [], actions: [],
@@ -80,7 +80,7 @@ const briefingData = {
       notion: ["Personal AI Assistant Dashboard"],
       actions: [
         { type: "warning", text: "GitHub Claude app permissions — RESOLVED (Aaron approved)" },
-        { type: "warning", text: "Discover Card (ending 6463) automatic statement credit not processed" },
+        { type: "warning", text: "Discover Card (ending 6463): $17,415.49 balance. Min $350 due Apr 22." },
         { type: "info", text: "Avery absent from WIN at Johnston High School" },
         { type: "info", text: "Slack reminder: Orgo computer setup (flagged urgent)" },
       ],
@@ -93,7 +93,7 @@ const briefingData = {
       overall: "Research projects stable. Agent stack significantly expanded this session.",
     },
   },
-  highImpact: { action: "Triage the P02 HVAC Module open issue on basepoint-mono2", reason: "Hive Studio project with an open validation & remediation issue. Only open GitHub issue across all repos.", segment: "hive" },
+  highImpact: { action: "Schedule basepoint-mono2 Session 27 to tackle Epic rkjz Spectrum table integration", reason: "Epic rkjz is the most active open sprint work. 4 Spectrum tables unintegrated. Pipeline silently drops columns at 4 points. 9 child beads map the full integration path.", segment: "hive" },
 };function Badge({ status }) {
   const s = STATUS[status]; if (!s) return null; const Icon = s.icon;
   return (<span style={{ display: "inline-flex", alignItems: "center", gap: 4, fontSize: 11, fontWeight: 600, color: s.color, background: s.color + "18", padding: "2px 8px", borderRadius: 12 }}><Icon size={12} /> {s.label}</span>);
@@ -165,20 +165,20 @@ function ActionItem({ action }) {
       <div style={{ marginTop: 16, padding: 16, background: "#F5F3FF", borderRadius: 8 }}>
         <div style={{ fontSize: 13, fontWeight: 600, color: "#7C3AED", marginBottom: 6 }}>Priority Queue</div>
         <ol style={{ margin: 0, paddingLeft: 20, fontSize: 13, color: "#374151", lineHeight: 1.8 }}>
-          <li><strong>GitHub Claude app permissions</strong> — unread, could affect CI/CD</li>
-          <li><strong>P02 HVAC Module issue</strong> — Hive Studio project blocker</li>
-          <li><strong>Discover Card credit</strong> — financial, time-sensitive</li>
-          <li><strong>Orgo computer setup</strong> — flagged urgent</li></ol></div></div>)}    {activeTab === "market" && (<div style={{ background: "#fff", borderRadius: 12, padding: 20, boxShadow: "0 1px 3px rgba(0,0,0,0.06)" }}>
+          <li><strong>basepoint-mono2 Session 27</strong> — Epic rkjz: 4 Spectrum tables unintegrated</li>
+          <li><strong>Nasdaq password expiring</strong> — change before lockout</li>
+          <li><strong>Discover Card statement</strong> — $17,415.49 balance, $350 min due Apr 22</li>
+          <li><strong>electricease-ai1 status check</strong> — stalled since Mar 23</li></ol></div></div>)}    {activeTab === "market" && (<div style={{ background: "#fff", borderRadius: 12, padding: 20, boxShadow: "0 1px 3px rgba(0,0,0,0.06)" }}>
       <h3 style={{ fontSize: 16, fontWeight: 700, color: "#1a1a2e", margin: "0 0 4px" }}>ES Futures — Alfred Bot Daily Levels</h3>
-      <p style={{ fontSize: 12, color: "#6b7280", margin: "0 0 16px" }}>Source: Slack #n8n channel via Alfred</p>
+      <p style={{ fontSize: 12, color: "#6b7280", margin: "0 0 16px" }}>Source: Slack #n8n channel via Alfred · March 27, 2026</p>
       <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12 }}>
-        <div style={{ padding: 16, background: "#F0FDF4", borderRadius: 8, textAlign: "center" }}><div style={{ fontSize: 11, fontWeight: 600, color: "#6b7280" }}>KEY LEVEL</div><div style={{ fontSize: 28, fontWeight: 800, color: "#1a1a2e" }}>6631</div></div>
+        <div style={{ padding: 16, background: "#F0FDF4", borderRadius: 8, textAlign: "center" }}><div style={{ fontSize: 11, fontWeight: 600, color: "#6b7280" }}>KEY LEVEL</div><div style={{ fontSize: 28, fontWeight: 800, color: "#1a1a2e" }}>6549</div></div>
         <div style={{ padding: 16, background: "#FEF3C7", borderRadius: 8, textAlign: "center" }}><div style={{ fontSize: 11, fontWeight: 600, color: "#6b7280" }}>VIX</div><div style={{ fontSize: 28, fontWeight: 800, color: "#D97706" }}>23.42</div><div style={{ fontSize: 11, color: "#92400E" }}>High: 27.24</div></div></div>
       <div style={{ marginTop: 16, display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12 }}>
         <div style={{ padding: 12, background: "#ECFDF5", borderRadius: 8 }}><div style={{ fontSize: 11, fontWeight: 700, color: "#10B981", marginBottom: 8 }}><TrendingUp size={12} style={{ marginRight: 4 }} />RESISTANCE</div>
-          {["6662", "6692", "6715"].map((v) => <div key={v} style={{ fontSize: 15, fontWeight: 600, color: "#065F46", padding: "2px 0" }}>{v}</div>)}</div>
+          {["6580", "6611"].map((v) => <div key={v} style={{ fontSize: 15, fontWeight: 600, color: "#065F46", padding: "2px 0" }}>{v}</div>)}</div>
         <div style={{ padding: 12, background: "#FEF2F2", borderRadius: 8 }}><div style={{ fontSize: 11, fontWeight: 700, color: "#EF4444", marginBottom: 8 }}><TrendingDown size={12} style={{ marginRight: 4 }} />SUPPORT</div>
-          {["6611", "6586", "6544"].map((v) => <div key={v} style={{ fontSize: 15, fontWeight: 600, color: "#991B1B", padding: "2px 0" }}>{v}</div>)}</div></div></div>)}
+          {["6511", "6470", "6446"].map((v) => <div key={v} style={{ fontSize: 15, fontWeight: 600, color: "#991B1B", padding: "2px 0" }}>{v}</div>)}</div></div></div>)}
     <div style={{ marginTop: 32, padding: "16px 0", borderTop: "1px solid #e5e7eb", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
       <span style={{ fontSize: 11, color: "#9ca3af" }}>Cowork Situational Awareness Engine · v1.0</span>
       <span style={{ fontSize: 11, color: "#9ca3af" }}>Sources: Slack · Gmail · GitHub · Notion · Vercel</span></div>
