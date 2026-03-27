@@ -45,55 +45,62 @@ const STATUS = {
 };
 const briefingData = {
   // displayTime is set dynamically at render time via getCentralTime()
-  summary: { activeProjects: 9, needsAttention: 3, recentDeploys: 5, stalledItems: 1, unreadActions: 3 },  segments: {
+  summary: { activeProjects: 9, needsAttention: 3, recentDeploys: 5, stalledItems: 1, unreadActions: 4 },  segments: {
     hive: {
       projects: [
-        { name: "superstack1", repo: "superstack1", status: "active", lastPush: "Today 3:29am", detail: "Paperclip deep research added. TypeScript.", vercel: "—" },
+        { name: "superstack1", repo: "superstack1", status: "active", lastPush: "Mar 26", detail: "Paperclip deep research added. TypeScript.", vercel: "—" },
         { name: "paperclipAU", repo: "paperclipAU", status: "active", lastPush: "Mar 24", detail: "Open-source orchestration for zero-human companies.", vercel: "—" },
-        { name: "basepoint-mono2", repo: "basepoint-mono2", status: "attention", lastPush: "Mar 24", detail: "TypeScript monorepo. 1 OPEN ISSUE: P02 HVAC Module.", vercel: "basepoint-mono2", issue: "P02 HVAC Module — Validation Report & Remediation Plan" },
+        { name: "basepoint-mono2", repo: "basepoint-mono2", status: "attention", lastPush: "Mar 24", detail: "Session 26 done. Epic rkjz open — 9 beads, 4 Spectrum tables unintegrated. Session 27 needed.", vercel: "basepoint-mono2", issue: "Epic rkjz: WO_TYPE_MC, WO_COST_HISTORY_MC, JC_ALT_JOB_BILLING_MC, JC_JOB_MASTER_TOTAL_MC pipeline drops" },
         { name: "hivestudio-ai", repo: "—", status: "deployed", lastPush: "—", detail: "Vercel project live. Main Hive Studio web presence.", vercel: "hivestudio-ai" },
         { name: "exodus1", repo: "exodus1", status: "deployed", lastPush: "Mar 21", detail: "TTS fully operational (A-Xee voice). 72 PASS, 0 FAIL. 1 open bead: Pakistan validation.", vercel: "exodus1" },
         { name: "tstarr", repo: "tstarr", status: "deployed", lastPush: "Mar 23", detail: "HTML. Deployed on Vercel.", vercel: "tstarr" },
-        { name: "cowork-codex-test", repo: "cowork-codex-test", status: "active", lastPush: "Yesterday", detail: "JS. Snake game test project.", vercel: "—" },
+        { name: "cowork-codex-test", repo: "cowork-codex-test", status: "active", lastPush: "Mar 26", detail: "JS. Snake game test project.", vercel: "—" },
         { name: "TheSwarm", repo: "TheSwarm", status: "active", lastPush: "Mar 21", detail: "Shell scripts. Swarm experimentation.", vercel: "the-swarm" },
       ],
       notion: ["AI Consultancy Project", "Projects 2025"],
-      actions: [{ type: "warning", text: "OPEN ISSUE on basepoint-mono2: P02 HVAC Module needs validation & remediation" }],
-      overall: "Active development. superstack1 pushed today. basepoint-mono2 has open HVAC issue needing triage.",
+      actions: [{ type: "warning", text: "Epic rkjz on basepoint-mono2: 4 Spectrum tables unintegrated, pipeline drops columns at 4 points. Session 27 needed." }],
+      overall: "basepoint-mono2 Epic rkjz is top priority. exodus1 stable. superstack1 & paperclipAU active.",
     },
     i10: {
       projects: [
         { name: "i10research-website", repo: "i10research-website", status: "deployed", lastPush: "Mar 22", detail: "Launch-ready. 924/924 tests. 37 ADRs. FINRA compliance fixed. GHL + GA4 live.", vercel: "i10research-website" },
-        { name: "es-futures-levels", repo: "es-futures-levels", status: "active", lastPush: "Yesterday", detail: "Daily auto-update bot. Alfred posting to Slack #n8n.", vercel: "—" },
+        { name: "es-futures-levels", repo: "es-futures-levels", status: "active", lastPush: "Mar 26", detail: "Daily auto-update bot. Alfred posting to Slack #n8n.", vercel: "—" },
         { name: "Trading Tools", repo: "au-MktStructureVP / PERMShindcast", status: "active", lastPush: "Various", detail: "Market structure and hindcast tools.", vercel: "—" },
       ],
-      notion: ["ITPM PTM Idea Generation", "Boosted.ai", "Alfred Reports", "Aaron strategies & weather"],
-      actions: [{ type: "info", text: "Alfred bot active — Key Level: 6549, R: 6580/6611, S: 6511/6470/6446, VIX: 23.42/27.24" }],
-      overall: "i10 website launch-ready. Alfred bot running daily. Nasdaq password needs attention.",
+      notion: ["ITPM PTM Idea Generation", "Boosted.ai", "Alfred Reports", "Aaron strategies"],
+      actions: [
+        { type: "info", text: "Alfred ES (Mar 27): Key 6549 | R: 6580/6611 | S: 6511/6470/6446 | VIX: 23.42/27.24" },
+        { type: "warning", text: "Nasdaq password expiring for auitenbroek+1@gmail.com — change before lockout" },
+        { type: "info", text: "Quant Partners: Oil hurting futures, Trump extension to Apr 6 not moving needle. Vol term structure note from Options Insight." },
+      ],
+      overall: "i10 website launch-ready. Alfred running daily. ES Key dropped from 6631→6549 (-82pts). Nasdaq pw expiring.",
     },    electric: {
-      projects: [{ name: "electricease-ai1", repo: "electricease-ai1", status: "active", lastPush: "Mar 23", detail: "PHP. Rebuild knowledge pack + PDFTron replacement.", vercel: "—" }],
-      notion: [], actions: [],
-      overall: "electricease-ai1 mid-rebuild. Single repo in this segment.",
+      projects: [{ name: "electricease-ai1", repo: "electricease-ai1", status: "stalled", lastPush: "Mar 23", detail: "PHP. Rebuild knowledge pack + PDFTron replacement. No activity in 4 days.", vercel: "—" }],
+      notion: [], actions: [{ type: "warning", text: "electricease-ai1 stalled since Mar 23 — needs status check and next steps" }],
+      overall: "electricease-ai1 stalled 4 days. Needs status check.",
     },
     personal: {
       projects: [],
       notion: ["Personal AI Assistant Dashboard"],
       actions: [
-        { type: "warning", text: "GitHub Claude app permissions — RESOLVED (Aaron approved)" },
         { type: "warning", text: "Discover Card (ending 6463): $17,415.49 balance. Min $350 due Apr 22." },
-        { type: "info", text: "Avery absent from WIN at Johnston High School" },
-        { type: "info", text: "Slack reminder: Orgo computer setup (flagged urgent)" },
+        { type: "info", text: "Calendar today: Friday Hackerspace Live Events 11am + Ruv Agentics.org 11am" },
+        { type: "warning", text: "Claude incident: Elevated error rates on BOTH Opus 4.6 and Sonnet 4.6 (ongoing Mar 27)" },
+        { type: "info", text: "Danelfin AI holdings report updated. ProShares daily bull/bear indicator received." },
       ],
-      overall: "Discover Card credit issue and Orgo computer setup still need attention.",
+      overall: "Discover Card $350 due Apr 22. Two calendar events today. Claude API incident ongoing.",
     },
     other: {
       projects: [{ name: "Agent Stack (ruflo/agentic-flow/RuVector)", repo: "Various forks", status: "active", lastPush: "Ongoing", detail: "28 agent definitions pulled. MCP Brain installed. 92 agents available.", vercel: "—" }],
-      notion: ["RUVECTOR POSTGRES CLOUD BRAIN ARCHITECTURE", "AGENTIC-FLOW + RUVECTOR", "OCR-au MCP details", "Codex 5.3"],
-      actions: [{ type: "info", text: "Agentics Foundation lab event today 12PM EST" }],
-      overall: "Research projects stable. Agent stack significantly expanded this session.",
+      notion: ["RUVECTOR POSTGRES CLOUD BRAIN ARCHITECTURE", "AGENTIC-FLOW + RUVECTOR", "OCR-au MCP details"],
+      actions: [
+        { type: "info", text: "AI news: LiteLLM breach hits 3.4M records. Tesla plans world's largest AI factory in TX. NVIDIA declares AGI." },
+        { type: "info", text: "FIA: Democrats propose ban on prediction market bets. Oil volatility draining liquidity." },
+      ],
+      overall: "Research stable. Major AI industry news: LiteLLM breach, Tesla AI factory, NVIDIA AGI claim.",
     },
   },
-  highImpact: { action: "Schedule basepoint-mono2 Session 27 to tackle Epic rkjz Spectrum table integration", reason: "Epic rkjz is the most active open sprint work. 4 Spectrum tables unintegrated. Pipeline silently drops columns at 4 points. 9 child beads map the full integration path.", segment: "hive" },
+  highImpact: { action: "Begin basepoint-mono2 Session 27 — Epic rkjz Spectrum table integration", reason: "Highest urgency carry-over from Mar 26. 4 Spectrum tables (WO_TYPE_MC, WO_COST_HISTORY_MC, JC_ALT_JOB_BILLING_MC, JC_JOB_MASTER_TOTAL_MC) remain unintegrated. Pipeline silently drops columns at 4 points. 9 child beads map the full integration path. This is day 2 waiting — momentum will stall if not addressed today.", segment: "hive" },
 };function Badge({ status }) {
   const s = STATUS[status]; if (!s) return null; const Icon = s.icon;
   return (<span style={{ display: "inline-flex", alignItems: "center", gap: 4, fontSize: 11, fontWeight: 600, color: s.color, background: s.color + "18", padding: "2px 8px", borderRadius: 12 }}><Icon size={12} /> {s.label}</span>);
@@ -165,12 +172,14 @@ function ActionItem({ action }) {
       <div style={{ marginTop: 16, padding: 16, background: "#F5F3FF", borderRadius: 8 }}>
         <div style={{ fontSize: 13, fontWeight: 600, color: "#7C3AED", marginBottom: 6 }}>Priority Queue</div>
         <ol style={{ margin: 0, paddingLeft: 20, fontSize: 13, color: "#374151", lineHeight: 1.8 }}>
-          <li><strong>basepoint-mono2 Session 27</strong> — Epic rkjz: 4 Spectrum tables unintegrated</li>
+          <li><strong>basepoint-mono2 Session 27</strong> — Epic rkjz: 4 Spectrum tables, day 2 waiting</li>
           <li><strong>Nasdaq password expiring</strong> — change before lockout</li>
-          <li><strong>Discover Card statement</strong> — $17,415.49 balance, $350 min due Apr 22</li>
-          <li><strong>electricease-ai1 status check</strong> — stalled since Mar 23</li></ol></div></div>)}    {activeTab === "market" && (<div style={{ background: "#fff", borderRadius: 12, padding: 20, boxShadow: "0 1px 3px rgba(0,0,0,0.06)" }}>
+          <li><strong>Discover Card</strong> — $17,415.49 balance, $350 min due Apr 22</li>
+          <li><strong>electricease-ai1</strong> — stalled 4 days, needs status check</li>
+          <li><strong>Claude API incident</strong> — Opus 4.6 + Sonnet 4.6 elevated errors</li>
+          <li><strong>exodus1 Pakistan validation</strong> — last open bead</li></ol></div></div>)}    {activeTab === "market" && (<div style={{ background: "#fff", borderRadius: 12, padding: 20, boxShadow: "0 1px 3px rgba(0,0,0,0.06)" }}>
       <h3 style={{ fontSize: 16, fontWeight: 700, color: "#1a1a2e", margin: "0 0 4px" }}>ES Futures — Alfred Bot Daily Levels</h3>
-      <p style={{ fontSize: 12, color: "#6b7280", margin: "0 0 16px" }}>Source: Slack #n8n channel via Alfred · March 27, 2026</p>
+      <p style={{ fontSize: 12, color: "#6b7280", margin: "0 0 16px" }}>Source: Slack #n8n channel via Alfred · March 27, 2026 · ES Key dropped 82pts from Mar 26</p>
       <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12 }}>
         <div style={{ padding: 16, background: "#F0FDF4", borderRadius: 8, textAlign: "center" }}><div style={{ fontSize: 11, fontWeight: 600, color: "#6b7280" }}>KEY LEVEL</div><div style={{ fontSize: 28, fontWeight: 800, color: "#1a1a2e" }}>6549</div></div>
         <div style={{ padding: 16, background: "#FEF3C7", borderRadius: 8, textAlign: "center" }}><div style={{ fontSize: 11, fontWeight: 600, color: "#6b7280" }}>VIX</div><div style={{ fontSize: 28, fontWeight: 800, color: "#D97706" }}>23.42</div><div style={{ fontSize: 11, color: "#92400E" }}>High: 27.24</div></div></div>
