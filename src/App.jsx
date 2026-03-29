@@ -45,12 +45,12 @@ const STATUS = {
 };
 const briefingData = {
   // displayTime is set dynamically at render time via getCentralTime()
-  summary: { activeProjects: 9, needsAttention: 4, recentDeploys: 6, stalledItems: 1, unreadActions: 5 },  segments: {
+  summary: { activeProjects: 9, needsAttention: 3, recentDeploys: 6, stalledItems: 1, unreadActions: 4 },  segments: {
     hive: {
       projects: [
-        { name: "superstack1", repo: "superstack1", status: "active", lastPush: "Mar 26", detail: "Paperclip deep research added. TypeScript. CEO Agent passive after board approval — needs re-trigger.", vercel: "—", issue: "Paperclip CEO Agent not acting on board approval (SUP-1). CTO hire approved but no follow-through." },
+        { name: "superstack1", repo: "superstack1", status: "active", lastPush: "Mar 28", detail: "CEO+CTO agents healthy (all runs exit 0). SUP-1 completed — i10 Research decomposed into 6 sub-issues. SUP-7 (LinkedIn ad campaign) BLOCKED.", vercel: "—", issue: "SUP-7 LinkedIn ad campaign strategy brief BLOCKED (high priority) — may need Board input to unblock." },
         { name: "paperclipAU", repo: "paperclipAU", status: "active", lastPush: "Mar 24", detail: "Open-source orchestration for zero-human companies.", vercel: "—" },
-        { name: "basepoint-mono2", repo: "basepoint-mono2", status: "attention", lastPush: "Mar 24", detail: "Session 26 done. Epic rkjz open — DAY 3. 9 beads, 4 Spectrum tables unintegrated. Session 27 overdue.", vercel: "basepoint-mono2", issue: "Epic rkjz DAY 3: WO_TYPE_MC, WO_COST_HISTORY_MC, JC_ALT_JOB_BILLING_MC, JC_JOB_MASTER_TOTAL_MC pipeline drops" },
+        { name: "basepoint-mono2", repo: "basepoint-mono2", status: "attention", lastPush: "Mar 24", detail: "Session 26 done. Epic rkjz open — DAY 5. 9 beads, 4 Spectrum tables unintegrated. Session 27 overdue.", vercel: "basepoint-mono2", issue: "Epic rkjz DAY 5: WO_TYPE_MC, WO_COST_HISTORY_MC, JC_ALT_JOB_BILLING_MC, JC_JOB_MASTER_TOTAL_MC pipeline drops" },
         { name: "hivestudio-ai", repo: "—", status: "deployed", lastPush: "—", detail: "Vercel project live. Main Hive Studio web presence.", vercel: "hivestudio-ai" },
         { name: "exodus1", repo: "exodus1", status: "deployed", lastPush: "Mar 21", detail: "TTS fully operational (A-Xee voice). 72 PASS, 0 FAIL. 1 open bead: Pakistan validation.", vercel: "exodus1" },
         { name: "tstarr", repo: "tstarr", status: "deployed", lastPush: "Mar 23", detail: "HTML. Deployed on Vercel.", vercel: "tstarr" },
@@ -59,51 +59,51 @@ const briefingData = {
       ],
       notion: ["AI Consultancy Project", "Projects 2025"],
       actions: [
-        { type: "warning", text: "Epic rkjz on basepoint-mono2 DAY 3: 4 Spectrum tables unintegrated, pipeline drops columns at 4 points. Session 27 overdue." },
-        { type: "warning", text: "Paperclip CEO Agent passive — board approved CTO hire + execution plan on SUP-1 but CEO Agent hasn't acted. Needs manual re-trigger or automation fix." },
+        { type: "warning", text: "Epic rkjz on basepoint-mono2 DAY 5: 4 Spectrum tables unintegrated, pipeline drops columns at 4 points. Session 27 overdue." },
+        { type: "warning", text: "SUP-7 LinkedIn ad campaign strategy brief BLOCKED — assigned to CEO Agent, needs Board input to unblock." },
+        { type: "info", text: "SUP-1 COMPLETED: CEO Agent decomposed i10 Research into 6 sub-issues (Phase A technical verification + Phase B growth). CEO+CTO agents all healthy." },
       ],
-      overall: "Two blockers: basepoint-mono2 Epic rkjz (day 3) + Paperclip CEO Agent stalled after board approval.",
+      overall: "SUP-1 closed. Two blockers remain: basepoint-mono2 Epic rkjz (day 5) + SUP-7 LinkedIn ad campaign BLOCKED.",
     },
     i10: {
       projects: [
         { name: "i10research-website", repo: "i10research-website", status: "deployed", lastPush: "Mar 28", detail: "Stripe→Sendy+GHL subscriber backfill deployed. 2 CTO Agent deploys ERRORED (LinkedIn ad + security headers). Production stable.", vercel: "i10research-website", issue: "2 ERROR deploys from CTO Agent (Mar 27) — LinkedIn ad campaign + security headers commits broke build" },
-        { name: "es-futures-levels", repo: "es-futures-levels", status: "active", lastPush: "Mar 27", detail: "Daily auto-update bot. Alfred posting to Slack #n8n. No Saturday update expected.", vercel: "—" },
+        { name: "es-futures-levels", repo: "es-futures-levels", status: "active", lastPush: "Mar 28", detail: "Alfred posted weekly ES levels Sat 9:03 PM. Key level 6446 (dropped from 6549).", vercel: "—" },
         { name: "Trading Tools", repo: "au-MktStructureVP / PERMShindcast", status: "active", lastPush: "Various", detail: "Market structure and hindcast tools.", vercel: "—" },
       ],
       notion: ["ITPM PTM Idea Generation", "Boosted.ai", "Alfred Reports", "Aaron strategies"],
       actions: [
-        { type: "info", text: "Alfred ES (Mar 27): Key 6549 | R: 6580/6611 | S: 6511/6470/6446 | VIX: 23.42/27.24. No Sat update." },
+        { type: "warning", text: "Alfred ES WEEKLY (Apr 3 email): Key 6446 (dropped 103pts from 6549) | R: 6495.75/6511/6520/6520.25 | S: 6350/6328/6250/6220. Significant level change." },
         { type: "warning", text: "2 ERROR deploys on i10research-website from CTO Agent — LinkedIn ad campaign + security headers broke Vercel build. Production unaffected (last READY deploy is Stripe backfill)." },
-        { type: "warning", text: "Nasdaq password expiring for auitenbroek+1@gmail.com — change before lockout" },
       ],
-      overall: "i10 website production stable with new Stripe sync. 2 CTO Agent commits errored. Alfred levels steady (Sat, no update). Nasdaq pw still expiring.",
+      overall: "ES Key dropped 103pts to 6446. i10 website production stable. 2 CTO Agent ERROR deploys still unresolved.",
     },    electric: {
-      projects: [{ name: "electricease-ai1", repo: "electricease-ai1", status: "stalled", lastPush: "Mar 23", detail: "PHP. Rebuild knowledge pack + PDFTron replacement. No activity in 5 days.", vercel: "—" }],
-      notion: [], actions: [{ type: "warning", text: "electricease-ai1 stalled 5 days (since Mar 23) — needs status check and next steps" }],
-      overall: "electricease-ai1 stalled 5 days. Needs status check.",
+      projects: [{ name: "electricease-ai1", repo: "electricease-ai1", status: "stalled", lastPush: "Mar 23", detail: "PHP. Rebuild knowledge pack + PDFTron replacement. No activity in 6 days.", vercel: "—" }],
+      notion: [], actions: [{ type: "warning", text: "electricease-ai1 stalled 6 days (since Mar 23) — needs status check and next steps" }],
+      overall: "electricease-ai1 stalled 6 days. Needs status check.",
     },
     personal: {
       projects: [],
       notion: ["Personal AI Assistant Dashboard"],
       actions: [
-        { type: "warning", text: "West Bank acct (*4762): Balance below threshold after $6.25 WDW purchase (Mar 28)." },
-        { type: "warning", text: "Discover Card (ending 6463): $17,415.49 balance. Min $350 due Apr 22." },
-        { type: "info", text: "Calendar today: No events scheduled (Saturday). Audible: 2 unused credits." },
-        { type: "info", text: "WSJ: Iran war alarm on Wall Street. Google Alert: UN report on Syria sectarian violence (1700+ killed)." },
+        { type: "info", text: "Calendar today: No events scheduled (Sunday)." },
+        { type: "info", text: "West Bank: $3.80 charge at ZAZA Cuban Comfort, Orlando FL (Lynsey's card). Orlando trip active." },
+        { type: "info", text: "Newsletters: Asymmetrist Iran War Part II desk debrief, WSJ Venezuela First Lady story, Kiplinger April RMD deadline." },
+        { type: "info", text: "Aaron DM notes (last night): UI UX Pro Max, Obsidian skills, Virlo.ai API for CMO content research, CodeSpring purchased for CTO." },
       ],
-      overall: "Saturday — no calendar events. Bank balance alert on WDW purchase. Discover $350 due Apr 22.",
+      overall: "Sunday — no calendar events. Orlando trip active. Virlo.ai + CodeSpring tools noted for team.",
     },
     other: {
       projects: [{ name: "Agent Stack (ruflo/agentic-flow/RuVector)", repo: "Various forks", status: "active", lastPush: "Ongoing", detail: "28 agent definitions pulled. MCP Brain installed. 92 agents available.", vercel: "—" }],
-      notion: ["RUVECTOR POSTGRES CLOUD BRAIN ARCHITECTURE", "AGENTIC-FLOW + RUVECTOR", "OCR-au MCP details"],
+      notion: ["RUVECTOR POSTGRES CLOUD BRAIN ARCHITECTURE", "AGENTIC-FLOW + RUVECTOR", "OCR-au MCP details", "Claude Code - Claude Flow - Beads"],
       actions: [
-        { type: "info", text: "WSJ 10-Point: Wall Street's Iran alarm — how long will the war last? Oil/geopolitical risk elevated." },
-        { type: "info", text: "Previous: LiteLLM breach 3.4M records. Tesla AI factory TX. NVIDIA AGI claim. Prediction market ban proposed." },
+        { type: "info", text: "Aaron evaluating: OpenCLI (opencli.org) for Claude/Cowork integration. CodeSpring for planning app builds." },
+        { type: "info", text: "Geopolitical: Iran War Part II trading implications. Al-Sharaa/Syria: UAE diplomatic engagement." },
       ],
-      overall: "Research stable. Geopolitical risk elevated (Iran). Agent stack operational.",
+      overall: "Research stable. New tools under evaluation (OpenCLI, CodeSpring, Virlo.ai). Geopolitical risk still elevated.",
     },
   },
-  highImpact: { action: "Re-trigger Paperclip CEO Agent on SUP-1 — board approval sitting unread", reason: "The Board approved the CTO hire + execution plan on SUP-1 (Mar 26-27), but the CEO Agent stopped after escalating. It has no polling loop — it won't see the approval until manually re-invoked. This is blocking Phase A (technical audit + launch verification) for the entire Paperclip/Superstack operation. A 5-minute re-trigger closes the loop. basepoint-mono2 Session 27 (day 3) is the second priority.", segment: "hive" },
+  highImpact: { action: "Unblock SUP-7 LinkedIn ad campaign strategy brief + start basepoint-mono2 Session 27", reason: "SUP-7 (LinkedIn ad campaign for i10 Research) is BLOCKED and assigned to CEO Agent — it needs Board input to proceed. This is the growth-side blocker for the Paperclip/Superstack operation. Meanwhile, basepoint-mono2 Epic rkjz is now DAY 5 with 4 Spectrum tables still unintegrated and Session 27 overdue. Recommended: (1) Review and unblock SUP-7 with a quick Board decision, (2) kick off Session 27 to tackle the Spectrum integration backlog.", segment: "hive" },
 };function Badge({ status }) {
   const s = STATUS[status]; if (!s) return null; const Icon = s.icon;
   return (<span style={{ display: "inline-flex", alignItems: "center", gap: 4, fontSize: 11, fontWeight: 600, color: s.color, background: s.color + "18", padding: "2px 8px", borderRadius: 12 }}><Icon size={12} /> {s.label}</span>);
@@ -175,23 +175,23 @@ function ActionItem({ action }) {
       <div style={{ marginTop: 16, padding: 16, background: "#F5F3FF", borderRadius: 8 }}>
         <div style={{ fontSize: 13, fontWeight: 600, color: "#7C3AED", marginBottom: 6 }}>Priority Queue</div>
         <ol style={{ margin: 0, paddingLeft: 20, fontSize: 13, color: "#374151", lineHeight: 1.8 }}>
-          <li><strong>Re-trigger Paperclip CEO Agent</strong> — board approval on SUP-1 sitting unread, blocking Phase A</li>
-          <li><strong>basepoint-mono2 Session 27</strong> — Epic rkjz DAY 3: 4 Spectrum tables, overdue</li>
+          <li><strong>Unblock SUP-7</strong> — LinkedIn ad campaign strategy brief BLOCKED, needs Board decision</li>
+          <li><strong>basepoint-mono2 Session 27</strong> — Epic rkjz DAY 5: 4 Spectrum tables unintegrated, overdue</li>
           <li><strong>Fix CTO Agent ERROR deploys</strong> — 2 broken builds on i10research-website (LinkedIn ad + security headers)</li>
-          <li><strong>Nasdaq password expiring</strong> — change before lockout</li>
-          <li><strong>Discover Card</strong> — $17,415.49 balance, $350 min due Apr 22</li>
-          <li><strong>electricease-ai1</strong> — stalled 5 days, needs status check</li>
+          <li><strong>ES Key Level drop</strong> — 6446 (▼103pts from 6549), review positioning and support levels</li>
+          <li><strong>electricease-ai1</strong> — stalled 6 days, needs status check and decision</li>
+          <li><strong>Evaluate new tools</strong> — Virlo.ai API for CMO, CodeSpring for CTO, OpenCLI for Cowork</li>
           <li><strong>exodus1 Pakistan validation</strong> — last open bead</li></ol></div></div>)}    {activeTab === "market" && (<div style={{ background: "#fff", borderRadius: 12, padding: 20, boxShadow: "0 1px 3px rgba(0,0,0,0.06)" }}>
-      <h3 style={{ fontSize: 16, fontWeight: 700, color: "#1a1a2e", margin: "0 0 4px" }}>ES Futures — Alfred Bot Daily Levels</h3>
-      <p style={{ fontSize: 12, color: "#6b7280", margin: "0 0 16px" }}>Source: Slack #n8n channel via Alfred · March 27, 2026 (no Saturday update) · ES Key 6549 (steady)</p>
+      <h3 style={{ fontSize: 16, fontWeight: 700, color: "#1a1a2e", margin: "0 0 4px" }}>ES Futures — Alfred Bot Weekly Levels</h3>
+      <p style={{ fontSize: 12, color: "#6b7280", margin: "0 0 16px" }}>Source: Slack #n8n channel via Alfred · April 3, 2026 email (posted Mar 28 9:03 PM) · ES Key 6446 (▼103pts from 6549)</p>
       <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12 }}>
-        <div style={{ padding: 16, background: "#F0FDF4", borderRadius: 8, textAlign: "center" }}><div style={{ fontSize: 11, fontWeight: 600, color: "#6b7280" }}>KEY LEVEL</div><div style={{ fontSize: 28, fontWeight: 800, color: "#1a1a2e" }}>6549</div></div>
-        <div style={{ padding: 16, background: "#FEF3C7", borderRadius: 8, textAlign: "center" }}><div style={{ fontSize: 11, fontWeight: 600, color: "#6b7280" }}>VIX</div><div style={{ fontSize: 28, fontWeight: 800, color: "#D97706" }}>23.42</div><div style={{ fontSize: 11, color: "#92400E" }}>High: 27.24</div></div></div>
+        <div style={{ padding: 16, background: "#FEF2F2", borderRadius: 8, textAlign: "center" }}><div style={{ fontSize: 11, fontWeight: 600, color: "#6b7280" }}>KEY LEVEL</div><div style={{ fontSize: 28, fontWeight: 800, color: "#DC2626" }}>6446</div><div style={{ fontSize: 11, color: "#991B1B" }}>▼103 from 6549</div></div>
+        <div style={{ padding: 16, background: "#FEF3C7", borderRadius: 8, textAlign: "center" }}><div style={{ fontSize: 11, fontWeight: 600, color: "#6b7280" }}>VIX</div><div style={{ fontSize: 28, fontWeight: 800, color: "#D97706" }}>—</div><div style={{ fontSize: 11, color: "#92400E" }}>Not in weekly email</div></div></div>
       <div style={{ marginTop: 16, display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12 }}>
         <div style={{ padding: 12, background: "#ECFDF5", borderRadius: 8 }}><div style={{ fontSize: 11, fontWeight: 700, color: "#10B981", marginBottom: 8 }}><TrendingUp size={12} style={{ marginRight: 4 }} />RESISTANCE</div>
-          {["6580", "6611"].map((v) => <div key={v} style={{ fontSize: 15, fontWeight: 600, color: "#065F46", padding: "2px 0" }}>{v}</div>)}</div>
+          {["6495.75", "6511", "6520", "6520.25"].map((v) => <div key={v} style={{ fontSize: 15, fontWeight: 600, color: "#065F46", padding: "2px 0" }}>{v}</div>)}</div>
         <div style={{ padding: 12, background: "#FEF2F2", borderRadius: 8 }}><div style={{ fontSize: 11, fontWeight: 700, color: "#EF4444", marginBottom: 8 }}><TrendingDown size={12} style={{ marginRight: 4 }} />SUPPORT</div>
-          {["6511", "6470", "6446"].map((v) => <div key={v} style={{ fontSize: 15, fontWeight: 600, color: "#991B1B", padding: "2px 0" }}>{v}</div>)}</div></div></div>)}
+          {["6350", "6328", "6250", "6220"].map((v) => <div key={v} style={{ fontSize: 15, fontWeight: 600, color: "#991B1B", padding: "2px 0" }}>{v}</div>)}</div></div></div>)}
     <div style={{ marginTop: 32, padding: "16px 0", borderTop: "1px solid #e5e7eb", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
       <span style={{ fontSize: 11, color: "#9ca3af" }}>Cowork Situational Awareness Engine · v1.0</span>
       <span style={{ fontSize: 11, color: "#9ca3af" }}>Sources: Slack · Gmail · GitHub · Notion · Vercel</span></div>
