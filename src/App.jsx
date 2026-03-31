@@ -44,13 +44,13 @@ const STATUS = {
   deployed: { icon: CheckCircle2, color: "#0EA5E9", label: "Recently Deployed" },
 };
 const briefingData = {
-  // displayTime is set dynamically at render time via getCentralTime()
-  summary: { activeProjects: 9, needsAttention: 5, recentDeploys: 6, stalledItems: 1, unreadActions: 6 },  segments: {
+  summary: { activeProjects: 9, needsAttention: 4, recentDeploys: 8, stalledItems: 1, unreadActions: 5 },
+  segments: {
     hive: {
       projects: [
-        { name: "superstack1", repo: "superstack1", status: "attention", lastPush: "Mar 30", detail: "CEO+CTO agents healthy (4 runs/hr each, all exit 0). SUP-7 BLOCKED 4+ days — CEO Agent flooding #board-approvals with 20+ duplicate approval requests. Hourly digests running.", vercel: "—", issue: "CRITICAL: GitHub PAT 'superstack2' EXPIRES TODAY (Mar 30). Renew NOW or agent pipeline breaks. SUP-7 approval loop needs intervention." },
+        { name: "superstack1", repo: "superstack1", status: "attention", lastPush: "Mar 30", detail: "CEO+CTO agents healthy (4 runs/hr each). SUP-8 content pipeline COMPLETE — all 21 LinkedIn posts drafted + compliance applied. SUP-7 still BLOCKED. Hourly digests running.", vercel: "—", issue: "superstack2 PAT expired today (Mar 30) — STATUS UNKNOWN. If not renewed, agent pipeline is broken. SUP-7 approval loop continues." },
         { name: "paperclipAU", repo: "paperclipAU", status: "active", lastPush: "Mar 24", detail: "Open-source orchestration for zero-human companies.", vercel: "—" },
-        { name: "basepoint-mono2", repo: "basepoint-mono2", status: "attention", lastPush: "Mar 24", detail: "Session 26 done. Epic rkjz open — DAY 7. 9 beads, 4 Spectrum tables unintegrated. Session 27 overdue.", vercel: "basepoint-mono2", issue: "Epic rkjz DAY 7: WO_TYPE_MC, WO_COST_HISTORY_MC, JC_ALT_JOB_BILLING_MC, JC_JOB_MASTER_TOTAL_MC pipeline drops" },
+        { name: "basepoint-mono2", repo: "basepoint-mono2", status: "attention", lastPush: "Mar 24", detail: "Session 26 done. Epic rkjz open — DAY 8. 9 beads, 4 Spectrum tables unintegrated. Session 27 overdue.", vercel: "basepoint-mono2", issue: "Epic rkjz DAY 8: WO_TYPE_MC, WO_COST_HISTORY_MC, JC_ALT_JOB_BILLING_MC, JC_JOB_MASTER_TOTAL_MC pipeline drops" },
         { name: "hivestudio-ai", repo: "—", status: "deployed", lastPush: "—", detail: "Vercel project live. Main Hive Studio web presence.", vercel: "hivestudio-ai" },
         { name: "exodus1", repo: "exodus1", status: "deployed", lastPush: "Mar 21", detail: "TTS fully operational (A-Xee voice). 72 PASS, 0 FAIL. 1 open bead: Pakistan validation.", vercel: "exodus1" },
         { name: "tstarr", repo: "tstarr", status: "deployed", lastPush: "Mar 23", detail: "HTML. Deployed on Vercel.", vercel: "tstarr" },
@@ -59,55 +59,58 @@ const briefingData = {
       ],
       notion: ["AI Consultancy Project", "Projects 2025"],
       actions: [
-        { type: "warning", text: "CRITICAL: GitHub fine-grained PAT 'superstack2' EXPIRES TODAY (Mar 30). Renew immediately at github.com/settings/tokens or Superstack agent operations will break." },
-        { type: "warning", text: "Epic rkjz on basepoint-mono2 DAY 7: 4 Spectrum tables unintegrated, pipeline drops columns at 4 points. Session 27 overdue." },
-        { type: "warning", text: "SUP-7 approval loop: CEO Agent posted 20+ duplicate board approval requests to #board-approvals overnight. Needs Board decision to stop loop AND unblock growth workstream." },
-        { type: "info", text: "Superstack agents stable: CEO (4 runs/hr) + CTO (4 runs/hr) all exit 0 this morning. No new issue completions." },
+        { type: "warning", text: "CRITICAL: GitHub PAT 'superstack2' EXPIRED TODAY (Mar 30). If not yet renewed, agent pipeline is broken. Renew immediately at github.com/settings/tokens." },
+        { type: "warning", text: "Epic rkjz on basepoint-mono2 DAY 8: 4 Spectrum tables unintegrated, pipeline drops columns at 4 points. Session 27 overdue." },
+        { type: "warning", text: "SUP-7 approval loop: CEO Agent still flooding #board-approvals with duplicate requests. Needs Board decision to stop loop AND unblock growth workstream." },
+        { type: "info", text: "Superstack agents stable: CEO+CTO hourly digests running. SUP-8 content strategy nearing completion — all deliverables ready for Board review." },
       ],
-      overall: "CRITICAL: superstack2 PAT expires TODAY. SUP-7 approval loop flooding Slack. Epic rkjz DAY 7.",
+      overall: "CRITICAL: superstack2 PAT expired today. SUP-7 loop continues. Epic rkjz DAY 8. SUP-8 content ready for review.",
     },
     i10: {
       projects: [
-        { name: "i10research-website", repo: "i10research-website", status: "deployed", lastPush: "Mar 28", detail: "Stripe→Sendy+GHL subscriber backfill deployed. 2 CTO Agent deploys ERRORED (LinkedIn ad + security headers). Production stable.", vercel: "i10research-website", issue: "2 ERROR deploys from CTO Agent still unresolved — LinkedIn ad campaign + security headers commits broke build" },
-        { name: "es-futures-levels", repo: "es-futures-levels", status: "active", lastPush: "Mar 30", detail: "Alfred DAILY: Key 6412 (▼34 from 6446, ▼137 weekly). WEEKLY: Key 6446, next week preview Key 6480. VIX: 28.36/33.74.", vercel: "—" },
+        { name: "i10research-website", repo: "i10research-website", status: "deployed", lastPush: "Mar 30", detail: "MASSIVE activity today — 6 production deploys all READY. Meta Pixel installed (17 pages). 21 LinkedIn posts + SEC/CFTC/NFA/FINRA compliance disclosures committed. CTO Agent ERROR deploys now superseded.", vercel: "i10research-website", issue: "Board review needed: 21 LinkedIn posts in docs/content/ ready for approval. SUP-10 LinkedIn profile audit also awaiting review." },
+        { name: "es-futures-levels", repo: "es-futures-levels", status: "active", lastPush: "Mar 30", detail: "Alfred DAILY (Mar 31): Key 6412 (holds). VIX improving: 27.94/33.28 (from 28.36/33.74). WEEKLY: Key 6446, next week Key 6480.", vercel: "—" },
         { name: "Trading Tools", repo: "au-MktStructureVP / PERMShindcast", status: "active", lastPush: "Various", detail: "Market structure and hindcast tools.", vercel: "—" },
       ],
       notion: ["ITPM PTM Idea Generation", "Boosted.ai", "Alfred Reports", "Aaron strategies"],
       actions: [
-        { type: "warning", text: "Alfred ES DAILY (Mar 30): Key 6412 (▼34 from 6446, ▼137 weekly from 6549) | R: 6446/6467/6496 | S: 6370/6345/6328 | VIX: 28.36/33.74. WEEKLY Key: 6446. Next week preview: Key 6480 (R: 6498 | S: 6350)." },
-        { type: "warning", text: "2 ERROR deploys on i10research-website from CTO Agent still unresolved — LinkedIn ad campaign + security headers broke Vercel build. Production unaffected." },
-        { type: "info", text: "Market intel: TanukiTrade — 'Energy Shock Meets Negative Gamma' + SPX Put BWB in high IV. Quant Partners: Stocks rebound as Trump says US in talks with Iran." },
-        { type: "info", text: "FIA SmartBrief: Study links $143M in Polymarket profits to suspicious trades." },
+        { type: "warning", text: "Board review NEEDED: 21 LinkedIn posts with full regulatory compliance (SEC/CFTC/NFA/FINRA) in docs/content/linkedin-posts-week{1,2,3}.md. SUP-10 LinkedIn profile audit also awaiting review. Nothing publishes without Board approval." },
+        { type: "info", text: "Alfred ES DAILY (Mar 31 email): Key 6412 (holds) | R: 6446/6468 | S: 6370/6328/6299 | VIX: 27.94/33.28 (improving). WEEKLY Key: 6446. Next week preview: Key 6480." },
+        { type: "info", text: "i10research-website: 6 production deploys today — Meta Pixel installed, LinkedIn content Weeks 1-3 committed, regulatory compliance applied to all 21 posts. All deploys READY." },
+        { type: "info", text: "Tickblaze: 3BP Liquidity Swings + Compass webinar replay available. Stocktwits: 'Big Short More Like Big Sale' — rate hike fears fading." },
       ],
-      overall: "ES Key holds at 6412 (▼137 weekly). VIX elevated 28.36. Weekly Key 6446, next week preview 6480. Production stable.",
-    },    electric: {
-      projects: [{ name: "electricease-ai1", repo: "electricease-ai1", status: "stalled", lastPush: "Mar 23", detail: "PHP. Rebuild knowledge pack + PDFTron replacement. No activity in 8 days.", vercel: "—" }],
-      notion: [], actions: [{ type: "warning", text: "electricease-ai1 stalled 8 days (since Mar 23) — needs status check, decision on next steps, or deprioritize" }],
-      overall: "electricease-ai1 stalled 8 days. Needs decision.",
+      overall: "VERY ACTIVE: 6 deploys today. All content + compliance ready. ES Key 6412 holds, VIX improving to 27.94. Board review needed on 21 posts.",
+    },
+    electric: {
+      projects: [{ name: "electricease-ai1", repo: "electricease-ai1", status: "stalled", lastPush: "Mar 23", detail: "PHP. Rebuild knowledge pack + PDFTron replacement. No activity in 9 days.", vercel: "—" }],
+      notion: [], actions: [{ type: "warning", text: "electricease-ai1 stalled 9 days (since Mar 23) — needs status check, decision on next steps, or deprioritize" }],
+      overall: "electricease-ai1 stalled 9 days. Needs decision.",
     },
     personal: {
       projects: [],
       notion: ["Personal AI Assistant Dashboard"],
       actions: [
-        { type: "info", text: "Google Calendar: No events scheduled today (Monday Mar 30)." },
-        { type: "info", text: "Gmail: Mostly newsletters. AI Report — Judge sides with Anthropic. AI Secret — Claude Mythos leak continues. ProShares daily indicator." },
-        { type: "info", text: "Geopolitical: Stocks rebounding on US-Iran talks (Quant Partners). Google Alert: Al-Sharaa Syria coverage." },
+        { type: "info", text: "Weather Alert: Severe Thunderstorm Warning for Polk County (Nextdoor). Stay aware." },
+        { type: "info", text: "Bolt.new retiring V1 agent — transfer projects by August 3, 2026. Action needed." },
+        { type: "info", text: "Amazon order: Natural Stacks MagTech + 2 items. Citi ThankYou points redeemed. ecobee: air filter change reminder." },
+        { type: "info", text: "Hope WDM: Holy Week volunteers needed. Delta SkyMiles: last chance 125K bonus miles offer." },
       ],
-      overall: "Clear calendar today. Newsletter-heavy inbox. Geopolitical: stocks rebounding on Iran diplomacy signals.",
+      overall: "Weather alert Polk County. Bolt.new V1 retiring (migrate by Aug 3). Supplement order placed. Holy Week volunteering.",
     },
     other: {
       projects: [{ name: "Agent Stack (ruflo/agentic-flow/RuVector)", repo: "Various forks", status: "active", lastPush: "Ongoing", detail: "28 agent definitions pulled. MCP Brain installed. 92 agents available.", vercel: "—" }],
       notion: ["RUVECTOR POSTGRES CLOUD BRAIN ARCHITECTURE", "AGENTIC-FLOW + RUVECTOR", "OCR-au MCP details", "Claude Code - Claude Flow - Beads"],
       actions: [
-        { type: "info", text: "AI News: Judge sides with Anthropic (The AI Report). Claude Mythos leak details emerging (AI Secret). Gemini making switching easier (Superhuman)." },
-        { type: "info", text: "OpenClaw enterprise evaluation continuing — weekly deep research scheduled." },
-        { type: "info", text: "Geopolitical risk slightly easing: US says in talks with Iran. But VIX remains elevated at 28.36." },
+        { type: "info", text: "Nate Herk newsletter: 'Claude Code + Paperclip Just Destroyed OpenClaw' — zero-human AI company coverage, Dion's first client handoff." },
+        { type: "info", text: "SingularityHub: Killer cells wipe out deadly superbugs in a day. CoinDesk/Grayscale: Ether staking exposure in brokerage." },
+        { type: "info", text: "Agent stack forks (ruvector-au, claude-flow-au, agentic-flow-au) quiet since Jan. OpenClaw eval continuing." },
       ],
-      overall: "Anthropic wins court ruling. Claude Mythos leak ongoing. Geopolitical risk stabilizing but VIX elevated.",
+      overall: "Paperclip + Claude Code featured in AI newsletter. Agent stack forks dormant. OpenClaw eval continues.",
     },
   },
-  highImpact: { action: "Renew GitHub PAT 'superstack2' TODAY + stop SUP-7 approval loop + make Board decision", reason: "The fine-grained PAT 'superstack2' EXPIRES TODAY (Mar 30). If it lapses, Superstack CEO+CTO agent operations lose GitHub access — breaking hourly digests, issue management, and all autonomous commits. This is a 2-minute fix at github.com/settings/tokens. ALSO URGENT: The CEO Agent has entered an approval loop, posting 20+ duplicate SUP-7 board approval requests to #board-approvals overnight. This will continue until you make a Board decision on the LinkedIn ad campaign (Conservative $3,300/mo recommended). Reply in #briefings-cowork: approve/modify/reject. Third: basepoint-mono2 Epic rkjz is now DAY 7 — Session 27 still overdue.", segment: "hive" },
-};function Badge({ status }) {
+  highImpact: { action: "Review & approve 21 LinkedIn posts + renew superstack2 PAT if not done", reason: "The Superstack content pipeline just completed a massive sprint: 21 LinkedIn posts across 3 weeks with full SEC/CFTC/NFA/FINRA regulatory compliance are ready in docs/content/. Nothing publishes without Board approval — this is the single biggest unblock for i10 Research growth. Also: if superstack2 PAT was not renewed this morning, agent operations are currently broken. Check github.com/settings/tokens. Third: basepoint-mono2 Epic rkjz is now DAY 8 — Session 27 still overdue. Reply in #briefings-cowork with your decisions.", segment: "i10" },
+};
+function Badge({ status }) {
   const s = STATUS[status]; if (!s) return null; const Icon = s.icon;
   return (<span style={{ display: "inline-flex", alignItems: "center", gap: 4, fontSize: 11, fontWeight: 600, color: s.color, background: s.color + "18", padding: "2px 8px", borderRadius: 12 }}><Icon size={12} /> {s.label}</span>);
 }
@@ -132,7 +135,8 @@ function ActionItem({ action }) {
   return (<div style={{ display: "flex", alignItems: "flex-start", gap: 8, padding: "8px 12px", borderRadius: 8, background: w ? "#FEF3C7" : "#F0F9FF", marginBottom: 6, fontSize: 13 }}>
     {w ? <AlertTriangle size={14} color="#D97706" style={{ marginTop: 2, flexShrink: 0 }} /> : <Zap size={14} color="#0EA5E9" style={{ marginTop: 2, flexShrink: 0 }} />}
     <span style={{ color: w ? "#92400E" : "#0C4A6E" }}>{action.text}</span></div>);
-}function SegmentSection({ segKey, data }) {
+}
+function SegmentSection({ segKey, data }) {
   const [open, setOpen] = useState(true); const seg = SEGMENTS[segKey];
   return (<div style={{ marginBottom: 20, background: "#fff", borderRadius: 12, border: `1px solid ${seg.color}22`, overflow: "hidden", boxShadow: "0 1px 3px rgba(0,0,0,0.04)" }}>
     <button onClick={() => setOpen(!open)} style={{ width: "100%", display: "flex", alignItems: "center", gap: 10, padding: "14px 20px", background: seg.bg, border: "none", cursor: "pointer", borderBottom: open ? `1px solid ${seg.color}22` : "none" }}>
@@ -146,7 +150,8 @@ function ActionItem({ action }) {
         <div style={{ fontSize: 11, fontWeight: 600, color: "#6b7280", marginBottom: 4 }}>NOTION PAGES</div>
         <div style={{ fontSize: 12, color: "#374151" }}>{data.notion.join(" · ")}</div></div>)}
     </div>)}</div>);
-}function Dashboard() {
+}
+function Dashboard() {
   const d = briefingData;
   const [activeTab, setActiveTab] = useState("overview");
   const [displayTime, setDisplayTime] = useState(getCentralTime());
@@ -168,7 +173,8 @@ function ActionItem({ action }) {
         <Zap size={16} color="#FBBF24" /><span style={{ fontSize: 12, fontWeight: 700, color: "#FBBF24", textTransform: "uppercase", letterSpacing: 0.5 }}>Highest-Impact Action</span>
         <SegmentBadge seg={d.highImpact.segment} /></div>
       <div style={{ fontSize: 16, fontWeight: 700, marginBottom: 6 }}>{d.highImpact.action}</div>
-      <div style={{ fontSize: 13, color: "#d1d5db", lineHeight: 1.5 }}>{d.highImpact.reason}</div></div>    <div style={{ display: "flex", gap: 0, marginBottom: 20, borderBottom: "2px solid #e5e7eb" }}>
+      <div style={{ fontSize: 13, color: "#d1d5db", lineHeight: 1.5 }}>{d.highImpact.reason}</div></div>
+    <div style={{ display: "flex", gap: 0, marginBottom: 20, borderBottom: "2px solid #e5e7eb" }}>
       {[{ id: "overview", label: "All Segments" }, { id: "actions", label: "Action Items" }, { id: "market", label: "Market Data" }].map((tab) => (
         <button key={tab.id} onClick={() => setActiveTab(tab.id)} style={{ padding: "10px 20px", fontSize: 13, fontWeight: 600, border: "none", background: "none", cursor: "pointer", color: activeTab === tab.id ? "#8B5CF6" : "#6b7280", borderBottom: activeTab === tab.id ? "2px solid #8B5CF6" : "2px solid transparent", marginBottom: -2 }}>{tab.label}</button>))}</div>
     {activeTab === "overview" && <div>{Object.entries(d.segments).map(([key, data]) => <SegmentSection key={key} segKey={key} data={data} />)}</div>}
@@ -178,24 +184,25 @@ function ActionItem({ action }) {
       <div style={{ marginTop: 16, padding: 16, background: "#F5F3FF", borderRadius: 8 }}>
         <div style={{ fontSize: 13, fontWeight: 600, color: "#7C3AED", marginBottom: 6 }}>Priority Queue</div>
         <ol style={{ margin: 0, paddingLeft: 20, fontSize: 13, color: "#374151", lineHeight: 1.8 }}>
-          <li><strong>CRITICAL: Renew superstack2 GitHub PAT</strong> — EXPIRES TODAY Mar 30. Agent pipeline breaks without it. 2-minute fix.</li>
-          <li><strong>Stop SUP-7 approval loop + make Board decision</strong> — CEO Agent posted 20+ duplicate requests overnight. Approve/modify/reject LinkedIn ad campaign ($3,300/mo Conservative recommended).</li>
-          <li><strong>basepoint-mono2 Session 27</strong> — Epic rkjz DAY 7: 4 Spectrum tables unintegrated, overdue</li>
-          <li><strong>Fix CTO Agent ERROR deploys</strong> — 2 broken builds on i10research-website (LinkedIn ad + security headers)</li>
-          <li><strong>ES Key Level decline</strong> — 6412 (▼137 weekly from 6549). VIX 28.36. Weekly Key 6446, next week preview 6480.</li>
-          <li><strong>electricease-ai1</strong> — stalled 8 days, needs decision: resume, pivot, or deprioritize</li>
-          <li><strong>Evaluate new tools</strong> — OpenClaw enterprise, Virlo.ai API, CodeSpring, OpenCLI</li>
-          <li><strong>exodus1 Pakistan validation</strong> — last open bead</li></ol></div></div>)}    {activeTab === "market" && (<div style={{ background: "#fff", borderRadius: 12, padding: 20, boxShadow: "0 1px 3px rgba(0,0,0,0.06)" }}>
+          <li><strong>Review & approve 21 LinkedIn posts</strong> — Full SEC/CFTC/NFA/FINRA compliance applied. In docs/content/linkedin-posts-week 1,2,3.md. Nothing publishes without Board approval.</li>
+          <li><strong>Verify superstack2 PAT renewal</strong> — Was due to expire today Mar 30. If not renewed, agent pipeline is broken. 2-minute fix at github.com/settings/tokens.</li>
+          <li><strong>Stop SUP-7 approval loop + Board decision</strong> — LinkedIn ad campaign ($3,300/mo Conservative recommended). Approve/modify/reject.</li>
+          <li><strong>basepoint-mono2 Session 27</strong> — Epic rkjz DAY 8: 4 Spectrum tables unintegrated, overdue</li>
+          <li><strong>ES Key Level</strong> — 6412 holds. VIX improving to 27.94 (from 28.36). Weekly Key 6446, next week preview 6480.</li>
+          <li><strong>electricease-ai1</strong> — stalled 9 days, needs decision: resume, pivot, or deprioritize</li>
+          <li><strong>Bolt.new V1 migration</strong> — V1 agent retiring, transfer projects by Aug 3, 2026</li>
+          <li><strong>exodus1 Pakistan validation</strong> — last open bead</li></ol></div></div>)}
+    {activeTab === "market" && (<div style={{ background: "#fff", borderRadius: 12, padding: 20, boxShadow: "0 1px 3px rgba(0,0,0,0.06)" }}>
       <h3 style={{ fontSize: 16, fontWeight: 700, color: "#1a1a2e", margin: "0 0 4px" }}>ES Futures — Alfred Bot Daily Levels</h3>
-      <p style={{ fontSize: 12, color: "#6b7280", margin: "0 0 16px" }}>Source: Slack #n8n via Alfred · Daily: Mar 30 email (posted Mar 29 9:58 PM CT) · Weekly: Apr 3 email (posted Mar 28 9:03 PM CT) · ES Key 6412 (▼34 daily, ▼137 weekly)</p>
+      <p style={{ fontSize: 12, color: "#6b7280", margin: "0 0 16px" }}>Source: Slack #n8n via Alfred · Daily: Mar 31 email (posted Mar 30 5:00 PM CT) · Weekly: Apr 3 email (posted Mar 28 9:03 PM CT) · ES Key 6412 (holds, VIX improving)</p>
       <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12 }}>
-        <div style={{ padding: 16, background: "#FEF2F2", borderRadius: 8, textAlign: "center" }}><div style={{ fontSize: 11, fontWeight: 600, color: "#6b7280" }}>KEY LEVEL</div><div style={{ fontSize: 28, fontWeight: 800, color: "#DC2626" }}>6412</div><div style={{ fontSize: 11, color: "#991B1B" }}>▼34 from 6446 (▼137 wkly)</div></div>
-        <div style={{ padding: 16, background: "#FEF3C7", borderRadius: 8, textAlign: "center" }}><div style={{ fontSize: 11, fontWeight: 600, color: "#6b7280" }}>VIX</div><div style={{ fontSize: 28, fontWeight: 800, color: "#D97706" }}>28.36</div><div style={{ fontSize: 11, color: "#92400E" }}>Range: 28.36 – 33.74</div></div></div>
+        <div style={{ padding: 16, background: "#FEF2F2", borderRadius: 8, textAlign: "center" }}><div style={{ fontSize: 11, fontWeight: 600, color: "#6b7280" }}>KEY LEVEL</div><div style={{ fontSize: 28, fontWeight: 800, color: "#DC2626" }}>6412</div><div style={{ fontSize: 11, color: "#991B1B" }}>Holds from yesterday (▼137 wkly)</div></div>
+        <div style={{ padding: 16, background: "#FEF3C7", borderRadius: 8, textAlign: "center" }}><div style={{ fontSize: 11, fontWeight: 600, color: "#6b7280" }}>VIX</div><div style={{ fontSize: 28, fontWeight: 800, color: "#D97706" }}>27.94</div><div style={{ fontSize: 11, color: "#92400E" }}>Range: 27.94 – 33.28 (improving)</div></div></div>
       <div style={{ marginTop: 16, display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12 }}>
         <div style={{ padding: 12, background: "#ECFDF5", borderRadius: 8 }}><div style={{ fontSize: 11, fontWeight: 700, color: "#10B981", marginBottom: 8 }}><TrendingUp size={12} style={{ marginRight: 4 }} />RESISTANCE</div>
-          {["6446", "6467", "6496"].map((v) => <div key={v} style={{ fontSize: 15, fontWeight: 600, color: "#065F46", padding: "2px 0" }}>{v}</div>)}</div>
+          {["6446", "6468"].map((v) => <div key={v} style={{ fontSize: 15, fontWeight: 600, color: "#065F46", padding: "2px 0" }}>{v}</div>)}</div>
         <div style={{ padding: 12, background: "#FEF2F2", borderRadius: 8 }}><div style={{ fontSize: 11, fontWeight: 700, color: "#EF4444", marginBottom: 8 }}><TrendingDown size={12} style={{ marginRight: 4 }} />SUPPORT</div>
-          {["6370", "6345", "6328"].map((v) => <div key={v} style={{ fontSize: 15, fontWeight: 600, color: "#991B1B", padding: "2px 0" }}>{v}</div>)}</div></div></div>)}
+          {["6370", "6328", "6299"].map((v) => <div key={v} style={{ fontSize: 15, fontWeight: 600, color: "#991B1B", padding: "2px 0" }}>{v}</div>)}</div></div></div>)}
     <div style={{ marginTop: 32, padding: "16px 0", borderTop: "1px solid #e5e7eb", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
       <span style={{ fontSize: 11, color: "#9ca3af" }}>Cowork Situational Awareness Engine · v1.0</span>
       <span style={{ fontSize: 11, color: "#9ca3af" }}>Sources: Slack · Gmail · GitHub · Notion · Vercel</span></div>
